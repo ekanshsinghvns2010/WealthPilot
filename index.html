@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0,
+                 maximum-scale=1.0, user-scalable=no">
+
+  <title>WealthPilot</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =========================================
+       WEALTHPILOT CINEMATIC INTRO
+       ========================================= -->
+
+  <div class="intro" id="intro">
+
+    <div class="ambient"></div>
+
+    <canvas id="particles"></canvas>
+
+    <div class="stage">
+
+      <div class="core">
+
+        <div class="halo halo-main"></div>
+        <div class="halo halo-two"></div>
+        <div class="halo halo-three"></div>
+
+        <div class="energy-sweep"></div>
+
+        <div class="logo-shell">
+
+          <svg
+            class="logo-svg"
+            viewBox="0 0 520 260"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true">
+
+            <defs>
+              <linearGradient
+                id="logoGrad"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%">
+
+                <stop offset="0%" stop-color="#16ddff"/>
+                <stop offset="50%" stop-color="#4e74ff"/>
+                <stop offset="100%" stop-color="#9561ff"/>
+
+              </linearGradient>
+            </defs>
+
+            <path
+              class="logo-w"
+              d="M90 65 L145 190 L205 85 L265 190 L325 65"
+              fill="none"
+              stroke="url(#logoGrad)"
+              stroke-width="18"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+            <path
+              class="logo-trend"
+              d="M285 175 C330 145 350 115 375 105 C400 95 425 110 455 55"
+              fill="none"
+              stroke="url(#logoGrad)"
+              stroke-width="14"
+              stroke-linecap="round"
+            />
+
+            <path
+              class="logo-tip"
+              d="M435 55 L455 55 L455 75"
+              fill="none"
+              stroke="#16ddff"
+              stroke-width="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+          </svg>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- TITLE -->
+
+    <div class="title-scene">
+
+      <div class="wordmark">
+        Wealth<span class="pilot">Pilot</span>
+      </div>
+
+      <div class="subtitle">
+        Intelligent wealth planning
+      </div>
+
+      <div class="title-line"></div>
+
+    </div>
+
+    <!-- BRAND -->
+
+    <div class="brand-scene">
+
+      <div class="brand-label">
+        Powered by
+      </div>
+
+      <div class="brand-lockup">
+
+        <div class="brand-logo">
+          V
+        </div>
+
+        <div class="brand-name">
+          Volbasty Studios
+        </div>
+
+      </div>
+
+      <div class="brand-line"></div>
+
+    </div>
+
+    <!-- FINAL STATEMENT -->
+
+    <div class="statement">
+
+      <div>
+        Build your financial future.
+      </div>
+
+      <span>
+        Plan smarter. Invest consistently. Grow with time.
+      </span>
+
+    </div>
+
+    <div class="final-flash"></div>
+
+    <div class="final-black"></div>
+
+    <div class="status">
+      Launching WealthPilot
+    </div>
+
+  </div>
+
+  <!-- =========================================
+       WEALTHPILOT APPLICATION
+       ========================================= -->
+
+  <main id="app" class="app">
+
+    <header class="app-header">
+
+      <div class="brand">
+
+        <div class="brand-mark">
+          W
+        </div>
+
+        <div class="brand-text">
+          <strong>WealthPilot</strong>
+          <span>Wealth Planning</span>
+        </div>
+
+      </div>
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        type="button"
+        aria-label="Open menu">
+
+        ☰
+
+      </button>
+
+    </header>
+          <!-- MAIN NAVIGATION -->
+
+    <nav class="main-nav" id="mainNav">
+
+      <button class="nav-item active" data-section="home">
+        <span>⌂</span>
+        <span>Home</span>
+      </button>
+
+      <button class="nav-item" data-section="sip">
+        <span>↗</span>
+        <span>SIP Lab</span>
+      </button>
+
+      <button class="nav-item" data-section="goals">
+        <span>◎</span>
+        <span>Goals</span>
+      </button>
+
+      <button class="nav-item" data-section="scenarios">
+        <span>◈</span>
+        <span>Scenarios</span>
+      </button>
+
+    </nav>
+
+
+    <!-- =========================================
+         HOME / WEALTH DASHBOARD
+         ========================================= -->
+
+    <section
+      class="app-section active"
+      id="homeSection"
+      data-section-panel="home">
+
+      <div class="dashboard-heading">
+
+        <div>
+          <span class="eyebrow">YOUR WEALTH JOURNEY</span>
+
+          <h1>
+            Build wealth<br>
+            <span>with intention.</span>
+          </h1>
+
+          <p>
+            See how consistent investing can shape your
+            financial future over time.
+          </p>
+        </div>
+
+      </div>
+
+
+      <!-- WEALTH SUMMARY -->
+
+      <div class="wealth-card">
+
+        <div class="wealth-card-top">
+
+          <div>
+            <span class="card-label">
+              PROJECTED WEALTH
+            </span>
+
+            <div
+              class="wealth-value"
+              id="dashboardCorpus">
+              ₹0
+            </div>
+
+            <span class="wealth-hint">
+              Estimated future value
+            </span>
+          </div>
+
+          <div class="growth-badge">
+            +0%
+          </div>
+
+        </div>
+
+
+        <!-- GRAPH -->
+
+        <div class="chart-wrapper">
+
+          <canvas
+            id="wealthChart"
+            aria-label="Projected wealth graph">
+          </canvas>
+
+        </div>
+
+
+        <div class="chart-labels">
+          <span>Today</span>
+          <span>Future</span>
+        </div>
+
+      </div>
+
+
+      <!-- KEY METRICS -->
+
+      <div class="metrics-grid">
+
+        <div class="metric-card">
+
+          <span class="metric-icon">₹</span>
+
+          <span class="metric-label">
+            Monthly SIP
+          </span>
+
+          <strong id="dashboardSip">
+            ₹0
+          </strong>
+
+        </div>
+
+
+        <div class="metric-card">
+
+          <span class="metric-icon">↗</span>
+
+          <span class="metric-label">
+            Total Invested
+          </span>
+
+          <strong id="dashboardInvested">
+            ₹0
+          </strong>
+
+        </div>
+
+
+        <div class="metric-card">
+
+          <span class="metric-icon">✦</span>
+
+          <span class="metric-label">
+            Estimated Growth
+          </span>
+
+          <strong id="dashboardGrowth">
+            ₹0
+          </strong>
+
+        </div>
+
+
+        <div class="metric-card">
+
+          <span class="metric-icon">◷</span>
+
+          <span class="metric-label">
+            Investment Horizon
+          </span>
+
+          <strong id="dashboardYears">
+            0 years
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- QUICK ACTIONS -->
+
+      <div class="section-heading">
+
+        <div>
+          <span class="eyebrow">
+            PLAN YOUR MONEY
+          </span>
+
+          <h2>Explore WealthPilot</h2>
+        </div>
+
+      </div>
+
+
+      <div class="quick-actions">
+
+        <button
+          class="action-card"
+          data-open-section="sip">
+
+          <div class="action-icon">
+            ↗
+          </div>
+
+          <div class="action-content">
+            <strong>SIP Lab</strong>
+
+            <span>
+              Model your investment journey
+            </span>
+          </div>
+
+          <span class="action-arrow">→</span>
+
+        </button>
+
+
+        <button
+          class="action-card"
+          data-open-section="goals">
+
+          <div class="action-icon">
+            ◎
+          </div>
+
+          <div class="action-content">
+            <strong>Goal Planner</strong>
+
+            <span>
+              Turn a financial goal into a plan
+            </span>
+          </div>
+
+          <span class="action-arrow">→</span>
+
+        </button>
+
+
+        <button
+          class="action-card"
+          data-open-section="scenarios">
+
+          <div class="action-icon">
+            ◈
+          </div>
+
+          <div class="action-content">
+            <strong>Scenario Studio</strong>
+
+            <span>
+              Compare different futures
+            </span>
+          </div>
+
+          <span class="action-arrow">→</span>
+
+        </button>
+
+      </div>
+
+
+      <!-- DISCLAIMER -->
+
+      <div class="dashboard-disclaimer">
+
+        <span>ⓘ</span>
+
+        <p>
+          WealthPilot projections are estimates based on
+          the assumptions you enter. Actual investment
+          returns may vary.
+        </p>
+
+      </div>
+
+    </section>
+          <!-- =========================================
+         SIP LAB
+         ========================================= -->
+
+    <section
+      class="app-section"
+      id="sipSection"
+      data-section-panel="sip">
+
+      <div class="page-heading">
+
+        <span class="eyebrow">SIP LAB</span>
+
+        <h1>
+          Design your<br>
+          <span>investment journey.</span>
+        </h1>
+
+        <p>
+          Adjust the numbers and see how your wealth
+          could grow over time.
+        </p>
+
+      </div>
+
+
+      <div class="calculator-layout">
+
+        <!-- INPUT CARD -->
+
+        <div class="calculator-card">
+
+          <div class="card-heading">
+            <span>INVESTMENT SETTINGS</span>
+            <h2>Your assumptions</h2>
+          </div>
+
+
+          <div class="input-group">
+
+            <label for="sipAmount">
+              Monthly investment
+            </label>
+
+            <div class="input-box">
+
+              <span>₹</span>
+
+              <input
+                id="sipAmount"
+                type="number"
+                inputmode="numeric"
+                value="5000"
+                min="100"
+                step="500"
+              />
+
+            </div>
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label for="sipReturn">
+              Expected annual return
+            </label>
+
+            <div class="input-box">
+
+              <input
+                id="sipReturn"
+                type="number"
+                inputmode="decimal"
+                value="12"
+                min="0"
+                max="50"
+                step="0.5"
+              />
+
+              <span>%</span>
+
+            </div>
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label for="sipYears">
+              Investment period
+            </label>
+
+            <div class="input-box">
+
+              <input
+                id="sipYears"
+                type="number"
+                inputmode="numeric"
+                value="20"
+                min="1"
+                max="60"
+                step="1"
+              />
+
+              <span>years</span>
+
+            </div>
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label for="sipStepUp">
+              Annual SIP increase
+            </label>
+
+            <div class="input-box">
+
+              <input
+                id="sipStepUp"
+                type="number"
+                inputmode="decimal"
+                value="10"
+                min="0"
+                max="100"
+                step="1"
+              />
+
+              <span>%</span>
+
+            </div>
+
+          </div>
+
+
+          <button
+            class="primary-button"
+            id="calculateSip"
+            type="button">
+
+            Calculate my wealth
+            <span>→</span>
+
+          </button>
+
+        </div>
+
+
+        <!-- RESULT CARD -->
+
+        <div class="result-card">
+
+          <span class="card-label">
+            PROJECTED CORPUS
+          </span>
+
+          <div
+            class="result-value"
+            id="sipCorpus">
+            ₹0
+          </div>
+
+          <p>
+            Estimated value at the end of
+            <strong id="sipResultYears">20 years</strong>.
+          </p>
+
+
+          <div class="result-breakdown">
+
+            <div>
+              <span>Total invested</span>
+              <strong id="sipInvested">
+                ₹0
+              </strong>
+            </div>
+
+            <div>
+              <span>Estimated returns</span>
+              <strong id="sipReturns">
+                ₹0
+              </strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- SIP GRAPH -->
+
+      <div class="large-chart-card">
+
+        <div class="chart-card-heading">
+
+          <div>
+            <span class="eyebrow">
+              WEALTH CURVE
+            </span>
+
+            <h2>
+              Your money over time
+            </h2>
+          </div>
+
+          <span
+            class="chart-status"
+            id="sipChartStatus">
+            Projection
+          </span>
+
+        </div>
+
+        <div class="large-chart-wrapper">
+
+          <canvas
+            id="sipChart"
+            aria-label="SIP wealth projection graph">
+          </canvas>
+
+        </div>
+
+      </div>
+
+
+      <!-- YEARLY SUMMARY -->
+
+      <div class="yearly-card">
+
+        <div class="section-heading">
+
+          <div>
+            <span class="eyebrow">
+              WEALTH MAP
+            </span>
+
+            <h2>Year-by-year view</h2>
+          </div>
+
+        </div>
+
+        <div
+          class="yearly-list"
+          id="yearlyList">
+
+          <div class="empty-state">
+            Calculate your SIP to see the
+            year-by-year projection.
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         GOAL PLANNER
+         ========================================= -->
+
+    <section
+      class="app-section"
+      id="goalsSection"
+      data-section-panel="goals">
+
+      <div class="page-heading">
+
+        <span class="eyebrow">GOAL PLANNER</span>
+
+        <h1>
+          Give your money<br>
+          <span>a destination.</span>
+        </h1>
+
+        <p>
+          Start with the future amount you want and
+          work backwards to understand the investment
+          required.
+        </p>
+
+      </div>
+
+
+      <div class="goal-card">
+
+        <div class="card-heading">
+
+          <span>YOUR FINANCIAL GOAL</span>
+
+          <h2>
+            What are you planning for?
+          </h2>
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label for="goalName">
+            Goal name
+          </label>
+
+          <div class="input-box">
+
+            <input
+              id="goalName"
+              type="text"
+              value="My financial goal"
+              maxlength="40"
+            />
+
+          </div>
+
+        </div>
+
+
+        <div class="goal-input-grid">
+
+          <div class="input-group">
+
+            <label for="goalAmount">
+              Target amount
+            </label>
+
+            <div class="input-box">
+
+              <span>₹</span>
+
+              <input
+                id="goalAmount"
+                type="number"
+                inputmode="numeric"
+                value="10000000"
+                min="1000"
+                step="1000"
+              />
+
+            </div>
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label for="goalYears">
+              Time available
+            </label>
+
+            <div class="input-box">
+
+              <input
+                id="goalYears"
+                type="number"
+                inputmode="numeric"
+                value="20"
+                min="1"
+                max="60"
+              />
+
+              <span>years</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label for="goalReturn">
+            Expected annual return
+          </label>
+
+          <div class="input-box">
+
+            <input
+              id="goalReturn"
+              type="number"
+              inputmode="decimal"
+              value="12"
+              min="0"
+              max="50"
+              step="0.5"
+            />
+
+            <span>%</span>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="primary-button"
+          id="calculateGoal"
+          type="button">
+
+          Build my goal plan
+          <span>→</span>
+
+        </button>
+
+      </div>
+              <!-- GOAL RESULT -->
+
+      <div
+        class="goal-result"
+        id="goalResult"
+        hidden>
+
+        <div class="goal-result-header">
+
+          <span class="eyebrow">
+            YOUR GOAL PLAN
+          </span>
+
+          <h2 id="goalResultName">
+            My financial goal
+          </h2>
+
+        </div>
+
+
+        <div class="goal-main-result">
+
+          <span>
+            REQUIRED MONTHLY INVESTMENT
+          </span>
+
+          <strong id="requiredSip">
+            ₹0
+          </strong>
+
+          <p>
+            Estimated monthly SIP required to reach
+            your target within the selected period.
+          </p>
+
+        </div>
+
+
+        <div class="goal-stats">
+
+          <div>
+            <span>Target corpus</span>
+
+            <strong id="goalTarget">
+              ₹0
+            </strong>
+          </div>
+
+          <div>
+            <span>Time available</span>
+
+            <strong id="goalTime">
+              0 years
+            </strong>
+          </div>
+
+          <div>
+            <span>Expected return</span>
+
+            <strong id="goalRate">
+              0%
+            </strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         SCENARIO STUDIO
+         ========================================= -->
+
+    <section
+      class="app-section"
+      id="scenariosSection"
+      data-section-panel="scenarios">
+
+      <div class="page-heading">
+
+        <span class="eyebrow">
+          SCENARIO STUDIO
+        </span>
+
+        <h1>
+          See different<br>
+          <span>financial futures.</span>
+        </h1>
+
+        <p>
+          Compare how different investment assumptions
+          can change your projected wealth.
+        </p>
+
+      </div>
+
+
+      <div class="scenario-input-card">
+
+        <div class="card-heading">
+
+          <span>SCENARIO SETTINGS</span>
+
+          <h2>
+            Build your comparison
+          </h2>
+
+        </div>
+
+
+        <div class="scenario-grid">
+
+          <div class="input-group">
+
+            <label for="scenarioSip">
+              Monthly investment
+            </label>
+
+            <div class="input-box">
+
+              <span>₹</span>
+
+              <input
+                id="scenarioSip"
+                type="number"
+                inputmode="numeric"
+                value="10000"
+                min="100"
+                step="500"
+              />
+
+            </div>
+
+          </div>
+
+
+          <div class="input-group">
+
+            <label for="scenarioYears">
+              Investment period
+            </label>
+
+            <div class="input-box">
+
+              <input
+                id="scenarioYears"
+                type="number"
+                inputmode="numeric"
+                value="20"
+                min="1"
+                max="60"
+              />
+
+              <span>years</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="primary-button"
+          id="runScenarios"
+          type="button">
+
+          Compare scenarios
+          <span>→</span>
+
+        </button>
+
+      </div>
+
+
+      <!-- SCENARIO CARDS -->
+
+      <div class="scenario-results">
+
+        <div class="scenario-card">
+
+          <span class="scenario-label">
+            CONSERVATIVE
+          </span>
+
+          <strong id="conservativeValue">
+            ₹0
+          </strong>
+
+          <span>
+            8% annual return
+          </span>
+
+        </div>
+
+
+        <div class="scenario-card featured">
+
+          <span class="scenario-label">
+            BASE CASE
+          </span>
+
+          <strong id="baseValue">
+            ₹0
+          </strong>
+
+          <span>
+            12% annual return
+          </span>
+
+        </div>
+
+
+        <div class="scenario-card">
+
+          <span class="scenario-label">
+            HIGHER RETURN
+          </span>
+
+          <strong id="higherValue">
+            ₹0
+          </strong>
+
+          <span>
+            15% annual return
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- SCENARIO GRAPH -->
+
+      <div class="large-chart-card">
+
+        <div class="chart-card-heading">
+
+          <div>
+
+            <span class="eyebrow">
+              SCENARIO COMPARISON
+            </span>
+
+            <h2>
+              Three possible paths
+            </h2>
+
+          </div>
+
+        </div>
+
+        <div class="large-chart-wrapper">
+
+          <canvas
+            id="scenarioChart"
+            aria-label="Scenario comparison graph">
+          </canvas>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         MOBILE MENU OVERLAY
+         ========================================= -->
+
+    <div
+      class="mobile-menu"
+      id="mobileMenu"
+      aria-hidden="true">
+
+      <div class="mobile-menu-header">
+
+        <div class="brand">
+
+          <div class="brand-mark">
+            W
+          </div>
+
+          <div class="brand-text">
+            <strong>WealthPilot</strong>
+            <span>Navigation</span>
+          </div>
+
+        </div>
+
+        <button
+          id="closeMenu"
+          class="close-menu"
+          type="button"
+          aria-label="Close menu">
+
+          ×
+
+        </button>
+
+      </div>
+
+
+      <div class="mobile-menu-links">
+
+        <button
+          class="mobile-nav-item active"
+          data-section="home">
+
+          <span>⌂</span>
+          <span>Home</span>
+
+        </button>
+
+        <button
+          class="mobile-nav-item"
+          data-section="sip">
+
+          <span>↗</span>
+          <span>SIP Lab</span>
+
+        </button>
+
+        <button
+          class="mobile-nav-item"
+          data-section="goals">
+
+          <span>◎</span>
+          <span>Goal Planner</span>
+
+        </button>
+
+        <button
+          class="mobile-nav-item"
+          data-section="scenarios">
+
+          <span>◈</span>
+          <span>Scenario Studio</span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer class="app-footer">
+
+      <div class="footer-brand">
+        WealthPilot
+      </div>
+
+      <p>
+        Built for long-term thinking.
+      </p>
+
+      <span>
+        © 2026 Volbasty Studios
+      </span>
+
+    </footer>
+
+  </main>
+      <!-- =========================================
+       APPLICATION SCRIPTS
+       ========================================= -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>
